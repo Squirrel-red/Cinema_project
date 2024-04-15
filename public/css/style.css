@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: bold;
+    /* font-size: 14px; */
+}
+
+:root{
+    --navbar_color : rgb(255, 226, 124);
+    --title-color : rgb(255, 199, 0);
+}
+
+button{
+    border: none;
+    background-color: white;
+}
+
+body{
+    position: relative;
+}
+
+a, i{
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* ---------------------------------  HEADER  ------------------------------ */
+header{
+    position: fixed;
+    height: 8vh;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0% 1%;
+}
+
+nav{
+    background-image: linear-gradient(to right bottom, rgb(255, 226, 124), rgb(153, 119, 0));
+    border-radius: 20px;
+    width: 90%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    flex-wrap: nowrap;
+    padding: 0% 1%;
+    z-index: 10000;
+    font-size: large;
+    color: aliceblue;
+}
+
+.nav_menu_list{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    column-gap: 2em;
+    list-style-type: none;
+}
+
+.nav_item{
+    transition: 1s;
+}
+
+.nav_home{
+    transition: 1s;
+    padding: 5px;
+}
+
+.nav_home:hover{
+    background-color: rgba(245, 245, 245, 0.4);
+    border-radius: 10px;
+    transform: scale(1.1);
+}
+
+.nav_item:hover{
+    transform: translateY(-10px);
+}
+
+/* ----------------------------------  MAIN  ------------------------------- */
+
+main{
+    margin-top: 8vh;
+}
+
+
+
+h2{
+    color: var(--title-color);
+    margin-bottom: 10px;
+}
+
+h1{
+    font-size: xx-large;
+    text-align: center;
+    padding: 5vh 1vw;
+    color: rgb(153, 119, 0);
+}
+
+
+/* List defilement */
