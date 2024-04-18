@@ -7,6 +7,7 @@
     <!-- REMIXICON -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css" integrity="sha512-OQDNdI5rpnZ0BRhhJc+btbbtnxaj+LdQFeh0V9/igiEPDiWE2fG+ZsXl0JEH+bjXKPJ3zcXqNyP4/F/NegVdZg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- CSS -->
+    <link rel="stylesheet" href="public/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="public/css/style.css">
     
     <title><?= $titre ?></title>
@@ -46,5 +47,6 @@
     </main>
     
 </body>
+    <script src="public/js/swiper-bundle.min.js"></script>
     <script src="public/js/main.js"></script>
 </html>
