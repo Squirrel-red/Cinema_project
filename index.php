@@ -23,6 +23,7 @@ if(isset($_GET["action"])){
         case "film_view"            : $ctrlCinema->viewFilm($_GET["genre"]); break;
         case "realisateur_view"     : $ctrlCinema->viewRealisateur(); break;
         case "acteur_view"          : $ctrlCinema->viewActeur(); break;
+        
         case "add_view"             : $ctrlCinema->viewAdd(); break;
         case "add_personne_view"    : $ctrlCinema->viewAddPersonne(); break;
         case "add_film_view"        : $ctrlCinema->viewAddFilm(); break;
@@ -36,5 +37,7 @@ if(isset($_GET["action"])){
         case "personne_fiche_view"  : $ctrlCinema->viewFichePersonne($_GET["id"]); break;
         case "modif_personne"       : $ctrlCinema->viewModifPersonne($_GET["id"]); break;
         case "modifPersonne"        : $ctrlCinema->ModifPersonne($_GET["id"]); break;
+
+        case "listRole"             : $ctrlCinema->choiceRole(); break;
     }
 }

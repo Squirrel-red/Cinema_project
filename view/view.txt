@@ -1,4 +1,4 @@
-- Dans le dossier "vieew on créé l'ensemble des vues affichant les résultats de requètes 
+- Dans le dossier "view on créé l'ensemble des vues affichant les résultats de requètes 
 mais aussi un fichier "template.php" qui servira de base/squelette à l'ensemble des vues.
 
 - On déclare le doctype, les links css/jss qu'une seule fois dans ce fichier "template.php".
