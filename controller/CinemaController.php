@@ -102,13 +102,27 @@ class CinemaController {
             contrat.id_film = film.id_film          
             ";
 
-             $pdo = Connect::seConnecter();
-             $requete = $pdo->query($sql);
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query($sql);
      
-             require "view\listActeursAndRoleParFilm.php";
+        require "view\listActeursAndRoleParFilm.php";
     }
 
+// Liste Films par genre
+public function listFilmParGenre() {
+        $sql = "
+            SELECT film.titre AS titre, film.date_sortie AS date, genre.genre AS genre
+            FROM film, gestion_genre, genre
+            WHERE film.id_film = gestion_genre.id_film
+            AND
+            gestion_genre.id_genre = genre.id_genre       
+            ";
 
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query($sql);
+ 
+        require "view\listFilmParGenre.php";
+}
 
 
 }

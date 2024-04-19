@@ -21,7 +21,8 @@ if(isset($_GET["action"])){
         case "listRealisateurs"          : $ctrlCinema->listRealisateurs(); break;
         case "listActeurs"               : $ctrlCinema->listActeurs(); break;
         case "listPersonnes"             : $ctrlCinema->listPersonnes(); break;
-        case "listActeursAndRoleParFilm" : $ctrlCinema->listActeursAndRoleParFilm(); break;        
+        case "listActeursAndRoleParFilm" : $ctrlCinema->listActeursAndRoleParFilm(); break;
+        case "listFilmParGenre"          : $ctrlCinema->listFilmParGenre(); break;         
 
 
 
