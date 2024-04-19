@@ -7,8 +7,8 @@
 }
 
 :root{
-    --navbar_color : rgb(255, 226, 124);
-    --title-color : rgb(255, 199, 0);
+    --navbar_color : rgb(146, 255, 124);
+    --title-color : rgb(0, 47, 255);
 }
 
 button{
@@ -39,7 +39,7 @@ header{
 }
 
 nav{
-    background-image: linear-gradient(to right bottom, rgb(255, 226, 124), rgb(153, 119, 0));
+    background-image: linear-gradient(to right bottom, rgb(124, 255, 227), rgb(153, 119, 0));
     border-radius: 20px;
     width: 90%;
     height: 80%;

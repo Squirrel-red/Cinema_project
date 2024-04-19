@@ -122,7 +122,7 @@ INSERT INTO `gestion_genre` (`id_film`, `id_genre`) VALUES
 CREATE TABLE IF NOT EXISTS `film` (
   `id_film` int NOT NULL AUTO_INCREMENT,
   `titre` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
-  `date_sortie` DATE NOT NULL,
+  `date_sortie` int DEFAULT NULL,
   `duree` int NOT NULL,
   `synopsis` text CHARACTER SET utf8mb3 COLLATE utf8mb3_bin  NOT NULL,
   `note` INT NOT NULL,
