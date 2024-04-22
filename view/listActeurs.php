@@ -27,4 +27,4 @@
 $titre = "Liste des acteurs/actrices";
 $titre_secondaire = "Liste des acteurs/actrices";
 $contenu = ob_get_clean();
-require_once "view/template.php";
+require_once "templates/template.php";

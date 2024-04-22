@@ -23,4 +23,4 @@
 $titre = "Liste des genres de films";
 $titre_secondaire = "Liste des genres de films";
 $contenu = ob_get_clean();
-require_once "view/template.php";
+require_once "templates/template.php";
