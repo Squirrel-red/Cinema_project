@@ -16,16 +16,16 @@ public function Accueil() {
     FROM film
     INNER JOIN realisateur r ON film.id_realisateur = r.id_realisateur
     INNER JOIN personne p ON r.id_personne = p.id_personne
-    WHERE id_film = 9
+    WHERE id_film = 7
     ");
 
     // acteurs du film favori
     $requeteActeursFilmFav = $pdo->query("
-    SELECT acteur.id_acteur, nom, prenom, CONCAT(nom, ' ', prenom) AS fullName, COUNT(*) AS nbFilms
+    SELECT acteur.id_acteur, nom, prenom, CONCAT(nom, ' ', prenom) AS fullName, photo, COUNT(*) AS nbFilms
     FROM acteur
     INNER JOIN personne p ON p.id_personne = acteur.id_personne
     INNER JOIN casting ON casting.id_acteur = acteur.id_acteur
-    WHERE casting.id_film = 9
+    WHERE casting.id_film = 7
     GROUP BY acteur.id_acteur
     ORDER BY nbFilms DESC
     ");
@@ -35,6 +35,7 @@ public function Accueil() {
     SELECT *
     FROM film
     ORDER BY date_sortie DESC
+    LIMIT 2
     ");
         // liste des genres " ' " préférés " ' "
 
@@ -46,6 +47,7 @@ public function Accueil() {
     INNER JOIN genre ON g.id_genre = genre.id_genre
     WHERE genre.id_genre = '1'
     ORDER BY date_sortie DESC
+    LIMIT 2
     ");
 
     // liste films pour toute la famille (genre "Comedie")

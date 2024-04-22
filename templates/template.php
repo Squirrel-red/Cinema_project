@@ -33,7 +33,7 @@
 
     <div id="search">
       <img src="public/img/wenSearch.png" alt="image loupe de la barre de recherche">
-      <input type="search" placeholder="recherchez un film, un acteur, etc.">
+      <input type="search" placeholder="un film, un acteur, etc.">
     </div>
 
     <nav>
@@ -65,7 +65,7 @@
     <main>
       <div id="contenu">
         <div id="header-template">
-          <h1 class="title">PDO-Cinema</h1>
+          <h1 class="title">Cinema</h1>
           <h2 class="subtitle"><?= $titre_secondaire ?></h2>
         </div>
 
@@ -83,7 +83,7 @@
           <figure id="logo-container">
             <img src="public/img/logo.jpg" alt="logo">
             <figcaption>
-              PDO-Cinema
+              Cinema
             </figcaption>
           </figure>
         </a>
