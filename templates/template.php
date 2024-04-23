@@ -33,7 +33,7 @@
 
     <div id="search">
       <img src="public/img/wenSearch.png" alt="image loupe de la barre de recherche">
-      <input type="search" placeholder="un film, un acteur, etc.">
+      <input type="search" placeholder="un film, un genre, un acteur, etc.">
     </div>
 
     <nav>
@@ -56,7 +56,7 @@
 
 
     <a href="#" id="connect-button">
-      connexion
+      Connexion
     </a>
 
   </header>
@@ -94,7 +94,7 @@
       </div>
 
       <div id="contact">
-        <h3 class="subtitle">contact</h3>
+        <h3 class="subtitle">Contact</h3>
         <ul class="link">
           <li>
             <a href="#">
@@ -130,19 +130,12 @@
     </p>
   </footer>
 
-  <?php if(isset($_SESSION["ValidatorMessages"])) {
-    foreach($_SESSION["ValidatorMessages"] as $notif) {
-        echo $notif;
-    }
-    unset($_SESSION["ValidatorMessages"]);
-} ?>
+
 
   <script src="public/js/menuBurger.js"></script>
   <script src="public/js/carrousel.js"></script>
-  <script src="public/js/form_add_remove.js"></script>
-  <script src="public/js/warningMessage.js"></script>
-  <script src="public/js/changeCastingFilm.js"></script>
-  <script src="public/js/notif.js"></script>
+
+
 </body>
 
 </html>

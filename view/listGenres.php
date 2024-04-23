@@ -1,26 +1,25 @@
-<?php ob_start(); ?>
-<p class="uk-label uk-label-warning"> Il y a <?= $requete->rowCount() ?> genres de films dans notre base de données :</p>
+<?php ob_start();
+$listGenres = $requeteGenres->fetchAll();
+?>
+<p class="subtitle">Sélectionnez un genre :</p>
+<ul id="genres-list">
 
-<table class="uk-table uk-table-striped">
-    <thead>
-        <tr>
-            <th>N°</th>
-            <th>GENRE</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            foreach($requete->fetchAll() as $genre) { ?>
-                <tr>
-                    <td><?= $genre["id"] ?></td>
-                    <td><?= $genre["genre"] ?></td>
-                </tr>
-            <?php } ?>
-    </tbody>
-</table>
+  <?php foreach($listGenres as $genre){ ?>
+
+  <li class="genre-card">
+    <a href="index.php?action=filmsGenre&id=<?= $genre["id_genre"] ?>">
+      <?= $genre["nom_genre"]; ?>
+    </a>
+  </li>
+  <?php } ?>
+</ul>
+
+  <!-- ajouter -->
+  <!-- supprimer -->
+
 
 <?php
-$titre = "Liste des genres de films";
-$titre_secondaire = "Liste des genres de films";
+$titre = "liste genres";
+$titre_secondaire = "liste des genres";
 $contenu = ob_get_clean();
-require_once "templates/template.php";
+require "templates/template.php";

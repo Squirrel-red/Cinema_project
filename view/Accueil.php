@@ -5,9 +5,8 @@ $acteursFilmFav = $requeteActeursFilmFav->fetchAll();
 $filmsMoment = $requeteFilmsMoment->fetchAll();
 ?>
 
-<!------------------------------------------------>
-<!---------------------- UNE --------------------->
-<!------------------------------------------------>
+
+<!--====================== UNE ==============================-->
 
 <section id="une">
   <h3>À la une</h3>
@@ -73,9 +72,7 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
 
 <hr>
 
-<!------------------------------------------------>
 <!-------------- DERNIERES SORTIES --------------->
-<!------------------------------------------------>
 
 <section id="dernieresSorties">
   <h3>Les dernières sorties</h3>
@@ -90,9 +87,7 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
 
 <hr>
 
-<!------------------------------------------------>
 <!-------------------- GENRES -------------------->
-<!------------------------------------------------>
 
 <section id="genres-accueil">
   <div id="genres-header">
@@ -116,7 +111,7 @@ $filmsAction = $requeteAction->fetchAll();
 $filmsFamille = $requeteFamille->fetchAll();
 $filmsSf = $requeteSF->fetchAll();
 
-    ////// Un carrousel par genre //////
+    // Un carrousel par genre //
 
     foreach($genresFavoris as $key => $value) { 
 
@@ -139,7 +134,7 @@ $filmsSf = $requeteSF->fetchAll();
           <a href="index.php?action=filmsGenre&id=<?= $films[0]["id_genre"] ?>">
             <?= ucwords($key) ?>
           </a>
-        </span> :
+        </span> 
       </h4>
 
       <!-- Intégration du carrousel -->

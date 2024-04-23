@@ -1,7 +1,9 @@
-<div class="carroussel">
+<!-- Fichier est appelé par Accueil.php, detailFilm.php -->
+
+<div class="carrousel">
   <i class="fa-solid fa-circle-arrow-left arrow arrow-left"></i>
 
-  <div class="carroussel-wrapper">
+  <div class="carrousel-wrapper">
     <div class="cards-container">
       <?php switch($typeCarrousel) {
 

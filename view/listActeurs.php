@@ -1,30 +1,25 @@
-<?php ob_start(); ?>
+<?php ob_start();
+$acteurs = $requete->fetchAll();
+?>
+<section id="listActeurs">
 
-<p class="uk-label uk-label-warning"> Il y a <?= $requete->rowCount() ?> acteurs dans notre base de données :</p>
+    <!-- ajouter acteur -->
 
-<table class="uk-table uk-table-striped">
-    <thead>
-        <tr>
-            <th>N°</th>
-            <th>ACTEUR</th>
-            <th>PROFIL</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            foreach($requete->fetchAll() as $acteur) { ?>
-                <tr>
-                    <td><?= $acteur["id"] ?></td>
-                    <td><?= $acteur["personne"] ?></td>
-                    <td><?= $acteur["profil"] ?></td>
+    <!-- supprimer acteur -->
 
-                </tr>
-            <?php } ?>
-    </tbody>
-</table>
+    <!-- lister acteurs  -->
+  <div class="cards-container">
+
+    <?php foreach($acteurs as $person){
+      $type = "acteur";
+
+require "templates/personCard.php";
+} ?>
+  </div>
+</section>
 
 <?php
-$titre = "Liste des acteurs/actrices";
-$titre_secondaire = "Liste des acteurs/actrices";
+$titre = "Liste des acteurs";
+$titre_secondaire = "Liste des acteurs";
 $contenu = ob_get_clean();
-require_once "templates/template.php";
+require "templates/template.php";

@@ -1,29 +1,24 @@
-<?php ob_start(); ?>
+<?php ob_start();
+$realisateurs = $requete->fetchAll() ?>
 
-<p class="uk-label uk-label-warning"> Il y a <?= $requete->rowCount() ?> réalisateurs dans notre base de données :</p>
+<section id="listRealisateurs">
 
-<table class="uk-table uk-table-striped">
-    <thead>
-        <tr>
-            <th>N°</th>
-            <th>REALISATEUR</th>
-            <th>INFORMATION</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            foreach($requete->fetchAll() as $realisateur) { ?>
-                <tr>
-                    <td><?= $realisateur["id"] ?></td>
-                    <td><?= $realisateur["personne"] ?></td>
-                    <td><?= $realisateur["profil"] ?></td>
-                </tr>
-            <?php } ?>
-    </tbody>
-</table>
+    <!--créer rea -->
+    
+    <!-- supprimer rea -->
 
+    <!--lister rea --> 
+  <div class="cards-container">
+
+    <?php foreach($realisateurs as $person){
+      $type = "realisateur";
+      require "templates/personCard.php";
+    } ?>
+
+  </div>
+</section>
 <?php
-$titre = "Liste des réalisateurs";
-$titre_secondaire = "Liste des réalisateurs";
+$titre = "Liste des realisateurs";
+$titre_secondaire = "Liste des realisateurs";
 $contenu = ob_get_clean();
-require_once "templates/template.php";
+require "templates/template.php";
