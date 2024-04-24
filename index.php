@@ -6,7 +6,7 @@ use Controller\FilmController;
 use Controller\GenresController;
 use Controller\RealisateurController;
 use Controller\ActeurController;
-//use Controller\CastingController;
+use Controller\CastingController;
 //use Controller\PersonneController;
 
 
@@ -21,10 +21,10 @@ $ctrlFilm = new FilmController();
 $ctrlGenre = new GenresController();
 $ctrlRea = new RealisateurController();
 $ctrlActeur = new ActeurController();
-//$ctrlCasting = new CastingController();
+$ctrlCasting = new CastingController();
 //$ctrlPersonne = new PersonneController();
 
-$id= (isset($_GET["id"])) ;
+$id= ($_GET["id"]) ;
 
 // En fonction de l'action détéctée dans l'URL via la propriété "action"
 // on interagit avec la bonne méthode du controller
@@ -52,7 +52,14 @@ if(isset($_GET["action"])){
 
     // cases (créer, ajouter, modifier, supprimer)
         
-             
+        // supprimer casting
+        case "supprimerCastingFilm": $ctrlCasting->supprimerCastingFilm($id);break;
+        //case "supprimerCastingActeur": $ctrlCasting->supprimerCastingActeur($id);break;
+      
+        // créer casting
+        case "creerCastingFilm": $ctrlCasting->creerCastingFilm($id);break;
+        //case "creerCastingActeur": $ctrlCasting->creerCastingActeur($id);break;  
+
         default: $ctrlCinema->Accueil();
     }
 }   else {

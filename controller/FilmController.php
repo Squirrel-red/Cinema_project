@@ -46,8 +46,23 @@ class FilmController {
 
 
     // requete des castings des acteurs
+    $requeteActeurs = $pdo->prepare("
+    SELECT *, CONCAT(prenom, ' ', nom) AS fullName
+    FROM casting c 
+    INNER JOIN acteur a ON c.id_acteur = a.id_acteur
+    INNER JOIN personne p ON p.id_personne = a.id_personne
+    INNER JOIN film ON c.id_film = film.id_film
+    INNER JOIN role ON role.id_role = c.id_role
+    WHERE film.id_film = :id
+    ORDER BY nom
+    ");
+    $requeteActeurs->execute(["id" => $id]);
 
-    // requete des ...
+    $requeteActeursAll = $pdo->query("
+    SELECT id_acteur, CONCAT(prenom, ' ', nom) AS fullName
+    FROM acteur
+    INNER JOIN personne p ON p.id_personne = acteur.id_personne 
+    ");
 
     require "view/detailFilm.php";
   }

@@ -89,7 +89,7 @@
         </a>
 
         <p id="footerDescription">
-          Trouvez votre film favori
+          Trouvez le meilleur film de votre vie!
         </p>
       </div>
 
@@ -97,27 +97,27 @@
         <h3 class="subtitle">Contact</h3>
         <ul class="link">
           <li>
-            <a href="#">
+            <a href="https://www.facebook.com/">
               <i class="fa-brands fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="https://www.instagram.com/">
               <i class="fa-brands fa-instagram"></i>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="https://twitter.com/">
               <i class="fa-brands fa-x-twitter"></i>
             </a>
           </li>
           <li>
-            <a href="#">
-              <i class="fa-brands fa-discord"></i>
+            <a href="https://fr.linkedin.com/">
+              <i class="fa-brands fa-linkedin"></i>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="https://github.com/">
               <i class="fa-brands fa-github"></i>
             </a>
           </li>

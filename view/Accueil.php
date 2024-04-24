@@ -9,14 +9,14 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
 <!--====================== UNE ==============================-->
 
 <section id="une">
-  <h3>À la une</h3>
+  <h3>Film favori pour vous</h3>
   <article>
 
     <!------------- AFFICHE ------------->
 
     <figure id="afficheFilmFav">
       <a href="index.php?action=detailFilm&id=<?= $filmFavori["id_film"] ?>">
-        <img src="<?= $filmFavori["affiche"] ?>" alt="Affiche du film <?= $filmFavori["nom_film"] ?>">
+        <img src="<?= $filmFavori["affiche_film"] ?>" alt="Affiche du film <?= $filmFavori["nom_film"] ?>">
       </a>
     </figure>
 
@@ -49,7 +49,7 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
       <!-- 2 Acteurs les plus "connus" -->
 
       <div class="acteurs">
-        <p>Avec nos vedettes</p>
+        <p>Vedettes du film</p>
         <div class='cards-container'>
 
           <?php foreach($acteursFilmFav as $person) {
@@ -150,6 +150,6 @@ $filmsSf = $requeteSF->fetchAll();
 
 <?php
 $titre = "Accueil";
-$titre_secondaire = "Trouvez votre film favori";
+$titre_secondaire = "Trouvez le meilleur film de votre vie!";
 $contenu = ob_get_clean();
 require "templates/template.php";

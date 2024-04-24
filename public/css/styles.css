@@ -1,5 +1,5 @@
 :root {
-  --darkblue: #2B2D42;
+  --darkblue: #091449;
   --bluegrey: rgba(56, 65, 173, 0.75);
   --lightgrey: #386599;
   --white: #a6afb8;
@@ -540,4 +540,190 @@ header {
 /* /////////// ACCUEIL //////////// */
 
 /*/////////////// UNE ///////////////*/
+#une article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--darkblue);
+  color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  height: 700px;
 
+  figure {
+    width: auto;
+    height: 100%;
+    overflow: hidden;
+    min-width: 40%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    a {
+      width: auto;
+      height: 100%;
+
+      img {
+        height: 100%;
+        transition: var(--transitionTime);
+        align-self: center;
+      }
+    }
+  }
+
+  /*//////// ASIDE ////////*/
+  aside {
+    position: relative;
+    padding: 20px;
+
+    .title {
+      padding-left: 5%;
+      color: white;
+    }
+
+    .subtitle {
+      display: flex;
+      color: white;
+
+      a {
+        color: var(--lightgrey);
+
+        &:hover {
+          color: white;
+        }
+      }
+    }
+
+    .synopsis {
+      color: white;
+
+      .link {
+        font-size: 0.8rem;
+        margin-top: 5px;
+        display: flex;
+        justify-content: flex-end;
+
+        a {
+          color: var(--lightgrey);
+        }
+      }
+
+      &:hover {
+        a {
+          color: white;
+
+          &:hover {
+            color: var(--lightgrey);
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+
+    .acteurs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      p {
+        color: white;
+        margin: 10px;
+      }
+
+      .subtitle {
+        color: white;
+      }
+
+      .cards-container {
+        figure {
+          flex-direction: row;
+
+          .affiche-container {
+            height: 150px;
+            width: 200px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*/////// DERNIERES SORTIES ////////*/
+
+#dernieresSorties {
+  align-items: center;
+
+  .cards-container {
+    width: 100%;
+    justify-content: space-evenly;
+  }
+}
+
+/*///////// PARCOURS GENRE /////////*/
+
+#genres-header {
+  width: 80%;
+  margin: 10px auto 50px auto;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    margin: 0;
+    padding: 0;
+  }
+
+  .link {
+    justify-content: flex-end;
+
+    a {
+      color: var(--bluegrey);
+    }
+  }
+
+  &:hover {
+    a {
+      color: white;
+    }
+  }
+}
+
+#genres-content {
+  article {
+    margin: 25px 0 50px 0;
+    display: flex;
+    flex-direction: column;
+
+    h4 {
+      width: auto;
+
+      .link {
+        margin: 0;
+        transition: var(--transitionTime);
+      }
+
+      a {
+        color: var(--darkblue);
+      }
+    }
+
+    /* LINKS HOVER SCALING */
+    &:hover {
+      .link {
+
+        a {
+          color: white;
+
+          &:hover {
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ///////// DETAIL FILM ////////// */

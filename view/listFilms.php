@@ -16,6 +16,7 @@ $films = $requete->fetchAll();
   <table class="tableFilms">
     <thead>
       <tr>
+        <th>AFFICHE</th>
         <th colspan="2">TITRE</th>
         <th>DATE SORTIE</th>
       </tr>
@@ -30,7 +31,7 @@ $films = $requete->fetchAll();
         <td class="afficheTableFilm">
           <div class="link">
             <a class href="<?= $href ?>">
-              <img src="<?= $film["affiche"] ?>" alt="affiche du film <?= $film["nom_film"] ?>">
+              <img src="<?= $film["affiche_film"] ?>" alt="affiche du film <?= $film["nom_film"] ?>">
             </a>
           </div>
         </td>

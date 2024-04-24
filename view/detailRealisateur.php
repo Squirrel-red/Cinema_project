@@ -15,10 +15,10 @@ $otherFilms = $requeteOtherFilms->fetchAll();
         <?= $detailRealisateur["fullName"] ?> est
         <!-- vérification du sexe -->
         <?php switch ( $detailRealisateur["sexe"] ) {
-          case "Homme": 
+          case "homme": 
             echo "un homme, né";
             break;
-          case "Femme": 
+          case "femme": 
             echo "une femme, née";
             break;
           default:
@@ -46,27 +46,23 @@ $otherFilms = $requeteOtherFilms->fetchAll();
   <h4>Ses réalisations :</h4>
 
   <p class="subtitle">
-    <?php switch($detailRealisateur["sexe"]) {
-      case "Homme" : echo "Il a"; break;
-      case "Femme" : echo "Elle a"; break;
-      default : echo "A"; break;
-    }
-    ?>
-    réalisé <?= $requeteFilms->rowCount() ?> films :
+
+     Il y a <?= $requeteFilms->rowCount() ?> film(-s) dans notre filmotèque:
   </p>
 
     <!-- créer un nouveau film -->
 
 
-    <!-- ajouter un film (sans rea) -->
+    <!-- ajouter un film (sans réalisateur) -->
 
 
-    <!-- supprimer le réa d'un film -->
+    <!-- supprimer le réalisateur d'un film -->
 
 
   <table class="tableFilms">
     <thead>
       <tr>
+        <th >AFFICHE</th>
         <th colspan="2">TITRE</th>
         <th>DATE SORTIE</th>
       </tr>
@@ -81,7 +77,7 @@ $otherFilms = $requeteOtherFilms->fetchAll();
         <td class="afficheTableFilm">
           <div class="link">
             <a class href="<?= $href ?>">
-              <img src="<?= $film["affiche"] ?>" alt="affiche du film <?= $film["nom_film"] ?>">
+              <img src="<?= $film["affiche_film"] ?>" alt="affiche du film <?= $film["nom_film"] ?>">
             </a>
           </div>
         </td>

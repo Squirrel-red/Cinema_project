@@ -1,7 +1,7 @@
 <a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>">
   <figure>
     <div class="affiche-container">
-      <img src="<?= $film["affiche"] ?>" alt="Affiche du film <?= $film["nom_film"] ?>">
+      <img src="<?= $film["affiche_film"] ?>" alt="Affiche du film <?= $film["nom_film"] ?>">
       <p class="img-back">
         <?= $film["nom_film"] ?>
       </p>
