@@ -54,11 +54,11 @@ if(isset($_GET["action"])){
         
         // supprimer casting
         case "supprimerCastingFilm": $ctrlCasting->supprimerCastingFilm($id);break;
-        //case "supprimerCastingActeur": $ctrlCasting->supprimerCastingActeur($id);break;
+        case "supprimerCastingActeur": $ctrlCasting->supprimerCastingActeur($id);break;
       
         // créer casting
         case "creerCastingFilm": $ctrlCasting->creerCastingFilm($id);break;
-        //case "creerCastingActeur": $ctrlCasting->creerCastingActeur($id);break;  
+        case "creerCastingActeur": $ctrlCasting->creerCastingActeur($id);break;  
 
         default: $ctrlCinema->Accueil();
     }

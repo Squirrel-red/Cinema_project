@@ -62,7 +62,7 @@ $otherFilms = $requeteOtherFilms->fetchAll();
   <table class="tableFilms">
     <thead>
       <tr>
-        <th >AFFICHE</th>
+        <!--<th >AFFICHE</th>-->
         <th colspan="2">TITRE</th>
         <th>DATE SORTIE</th>
       </tr>

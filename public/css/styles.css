@@ -539,7 +539,7 @@ header {
 
 /* /////////// ACCUEIL //////////// */
 
-/*/////////////// UNE ///////////////*/
+/*/////////////// FILM POUR VOUS///////////////*/
 #une article {
   display: flex;
   align-items: center;
@@ -726,4 +726,163 @@ header {
   }
 }
 
+
 /* ///////// DETAIL FILM ////////// */
+
+#detailFilm {
+  width: 100%;
+  display: flex;
+
+  p {
+    margin-bottom: 10px;
+  }
+}
+
+#detailFilm-details,
+#detailFilm-synopsis {
+  width: 32%;
+
+  .link a {
+    color: white;
+
+    &:hover {
+      color: var(--darkblue);
+
+    }
+  }
+}
+
+#detailFilm-affiche {
+  width: 36%;
+  margin: 0 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    width: 100%;
+  }
+
+  .detailFilm-note {
+    margin-top: 25px;
+    color: yellow;
+    font-weight: 600;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+
+    i {
+      color: yellow;
+      margin-left: 5px;
+    }
+  }
+}
+
+.acteurCard {
+  /* Empeche les cards de rétrécir à cause du flex de cardsContainer */
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  padding: 10px 30px;
+  margin: 0 25px;
+  border: 2px solid #2B2D42;
+  border-radius: 20px;
+  position: relative;
+
+  figure {
+    margin-right: 20px;
+  }
+
+  .editButton {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transitionTime);
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &:active {
+      transform: scale(0.8);
+      transition: 0s;
+    }
+  }
+}
+
+
+/* ////// DETAIL REALISATEUR ////// */
+
+
+#personInfos {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  figure {
+    width: 50%;
+
+    img {
+      width: 100%;
+    }
+
+    figcaption {
+      text-align: center;
+      margin-top: 15px;
+    }
+  }
+}
+
+.tableFilms {
+
+  th {
+    border: 1px solid black;
+  }
+
+  td {
+    padding: 10px 0;
+    margin: 10px;
+    border-bottom: 1px solid var(--bluegrey);
+    text-align: center;
+    vertical-align: middle;
+
+    .link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--bluegrey);
+
+      a {
+        border-radius: 15px;
+        height: 120px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+      }
+
+      &:hover {
+        a {
+          color: white;
+        }
+
+        img {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+
+
+  img {
+    max-height: 100%;
+    transition: var(--transitionTime);
+  }
+}
+
+
+/* ////////// LIST GENRE ////////// */
+
+

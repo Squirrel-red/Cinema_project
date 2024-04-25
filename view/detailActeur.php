@@ -32,7 +32,9 @@ $films = $requeteAllFilms->fetchAll(); ?>
 </section>
 
 
-   <!-- modifier les infos coder -->
+   <!-- modifier les infos coder ...  -->
+
+
 
 
 <hr>
@@ -44,15 +46,68 @@ $films = $requeteAllFilms->fetchAll(); ?>
     Il y a <?= $requeteFilms->rowCount() ?> film/-s éxistant dans notre filmothéque :
   </p>
  
-   <!--ajouter un casting  coder-->
+ 
+  <div class='buttons'>
 
-   <!-- retirer un casting   coder-->
+     <!-- Créer casting acteur -->
+    <div class="addContainer">
+      <button class="addButton">ajouter un casting</button>
+
+      <form id="addCasting" action="index.php?action=creerCastingActeur&id=<?= $detailActeur["id_acteur"] ?>"
+        method="post">
+
+        <!-- choix film -->
+        <select name="film" required>
+          <option selected="true" value="" disabled="disabled">
+            Choisissez un film
+          </option>
+          <?php foreach($films as $film) { ?>
+
+          <option value="<?= $film["id_film"] ?>">
+            <?= $film["nom_film"] ?>
+          </option>
+          <?php } ?>
+        </select>
+
+        <!-- choix role -->
+        <div id="castingRole">
+          <label for="role">Quel rôle joué ?</label>
+          <input type="text" id="role" name="role" required>
+        </div>
+
+        <input type="submit" value="valider">
+      </form>
+    </div>
+
+     <!--Supprimer casting acteur -->
+    <div class="removeContainer">
+      <button class="removeButton">retirer un casting</button>
+
+      <form id="removeCasting" class="divWarning"
+        action="index.php?action=supprimerCastingActeur&id=<?= $detailActeur["id_acteur"] ?>" method="post">
+        <select name="role" class="warner" required>
+          <option selected="true" value="" disabled="disabled">
+            Choisissez un role
+          </option>
+          <?php foreach($acteurFilms as $casting) { ?>
+
+          <option value="<?= $casting["id_role"] ?>">
+            <?= $casting["nom_role"] ?>
+          </option>
+
+          <?php } ?>
+        </select>
+        <span class="warningMessage warningCache">Supprimer ce role?</span>
+        <input type="submit" value="valider">
+      </form>
+    </div>
+  </div>
 
 
   <table class="tableFilms">
     <thead>
       <tr>
-        <th>AFFICHE</th>
+        <!--<th>AFFICHE</th> -->
         <th colspan="2">TITRE</th>
         <th>ROLE</th>
       </tr>

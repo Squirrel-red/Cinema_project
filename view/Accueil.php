@@ -9,7 +9,7 @@ $filmsMoment = $requeteFilmsMoment->fetchAll();
 <!--====================== UNE ==============================-->
 
 <section id="une">
-  <h3>Film favori pour vous</h3>
+  <h3>Film pour vous</h3>
   <article>
 
     <!------------- AFFICHE ------------->
