@@ -87,48 +87,12 @@
 
 @keyframes meAnimation {
   0% {
-    transform: rotate(-80deg) scale(1);
+    transform: rotate(-5deg) scale(1);  
+  }
+  0% {
+    transform: rotate(5deg) scale(.9);
   }
 
-  10% {
-    transform: rotate(80deg) scale(.9);
-  }
-
-  20% {
-    transform: rotate(-70deg) scale(.8);
-  }
-
-  30% {
-    transform: rotate(70deg) scale(.7);
-  }
-
-  40% {
-    transform: rotate(-50deg) scale(.6);
-  }
-
-  50% {
-    transform: rotate(50deg) scale(.5);
-  }
-
-  60% {
-    transform: rotate(-20deg) scale(.4);
-  }
-
-  70% {
-    transform: rotate(20deg) scale(.3);
-  }
-
-  80% {
-    transform: rotate(-10deg) scale(.2);
-  }
-
-  90% {
-    transform: rotate(10deg) scale(.1);
-  }
-
-  100% {
-    transform: rotate(0deg) scale(0);
-  }
 }
 
 /* /////// GENERAL /////// */
@@ -886,3 +850,598 @@ header {
 /* ////////// LIST GENRE ////////// */
 
 
+#genres-list {
+  width: 100%;
+  padding: 0 10%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.genre-card {
+  background-color: var(--bluegrey);
+  padding: 8px 20px;
+  margin: 10px;
+  width: auto;
+  transition: var(--transitionTime);
+  border: 1px solid transparent;
+  border-radius: 20px;
+
+  a {
+    transition: var(--transitionTime);
+    color: white;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    background-color: var(--lightgrey);
+    border-color: var(--darkblue);
+
+    a {
+      color: var(--darkblue);
+    }
+  }
+}
+
+/* ////////// LIST FILMS ////////// */
+
+
+#listFilms {
+  p {
+    margin-bottom: 15px;
+  }
+
+  th {
+    border: 1px solid black;
+  }
+
+  td {
+    text-align: center;
+  }
+}
+
+/* ////// FILMS GENRE & LISTS ///// */
+
+#filmsGenre,
+#listActeurs,
+#listRealisateurs {
+
+  .cards-container {
+    flex-wrap: wrap;
+    justify-content: center;
+
+    figcaption {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+  }
+}
+
+/* //////// BUTTONS & FORMS /////// */
+/* //////////////////////////////// */
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+
+  button {
+    padding: 6px 15px;
+    margin-bottom: 10px;
+    background-color: var(--lightgrey);
+    border: 2px solid var(--darkblue);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transitionTime);
+
+    i {
+      margin-right: 10px;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      background-color: var(--darkblue);
+      color: white;
+    }
+
+    &:active {
+      transform: scale(0.9);
+      transition: 0.1s;
+    }
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  form {
+    display: none;
+  }
+}
+
+.buttonForm {
+  padding: 8px 15px;
+  border-radius: 10px;
+  border: 2px solid var(--darkblue);
+  background-color: var(--lightgrey);
+  transition: var(--transitionTime);
+
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: scale(0.8);
+    transition: 0s;
+  }
+}
+
+#castingRole {
+  margin: 15px 0;
+}
+
+#formsGenre {
+  flex-direction: row;
+
+  form {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  #nom_genre,
+  #genres-select {
+    margin: 20px 0;
+    font-size: 1rem;
+    background-color: var(--lightgrey);
+  }
+
+  #genres-select {
+    border-width: 2px;
+  }
+
+  span {
+    margin-bottom: 15px;
+    width: 50%;
+  }
+}
+
+#create {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-self: center;
+  margin-bottom: 50px;
+
+  fieldset,
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+
+    label {
+      margin: 10px 0;
+    }
+
+    input {
+      padding: 5px;
+    }
+
+    input,
+    select {
+      width: fit-content;
+    }
+
+    #isReaActeur input {
+      margin: 0.4rem;
+    }
+  }
+
+  fieldset {
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  div {
+    width: 80%
+  }
+
+  #formGenres {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    label {
+      margin: 0;
+    }
+  }
+}
+
+.checkboxContainer {
+  margin: 2px 4px;
+  padding: 2px 4px;
+  border: 1px solid #2B2D42;
+  display: flex;
+  align-items: center;
+
+  label {
+    margin: 0;
+  }
+
+  input {
+    margin-right: 10px;
+  }
+}
+
+.submit-button {
+  align-self: center;
+  padding: 2px 8px;
+  margin: 20px;
+}
+
+
+/* //////////// FOOTER //////////// */
+
+
+footer {
+  height: 20vh;
+  background-color: var(--darkblue);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  * {
+    color: white;
+  }
+}
+
+#footerContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  #footerDescription {
+    margin-top: 10px;
+  }
+
+  #contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    li {
+      padding: 5px;
+
+      i {
+        transition: var(--transitionTime);
+      }
+
+      &:hover {
+        i {
+          color: var(--lightgrey);
+          transform: scale(1.5);
+        }
+      }
+    }
+  }
+}
+
+.copy {
+  padding: 15px 0;
+
+  a {
+    padding-left: 5px;
+    display: inline-block;
+  }
+
+  &:hover a {
+    animation: meAnimation 3s infinite;
+  }
+}
+
+/* //////////////////////////////// */
+/* ///////// MEDIA QUERIES //////// */
+/* //////////////////////////////// */
+
+/* ////////// MAX to MIN ////////// */
+
+@media screen and (max-width: 1200px) {
+  #une article {
+    flex-direction: column;
+    overflow: visible;
+    height: auto;
+    background-color: var(--lightgrey);
+
+    #afficheFilmFav {
+      padding: 50px;
+      background-color: var(--lightgrey);
+      width: 90%;
+
+      img {
+        height: auto;
+        width: 100%;
+      }
+    }
+
+    aside {
+      border-radius: 15px;
+      background-color: var(--darkblue);
+      overflow: hidden;
+      max-width: 80%;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  main {
+    width: 100%;
+  }
+
+  .carroussel {
+    width: 80%;
+    align-self: center;
+  }
+
+  /* header order change */
+  header {
+    #logo-container {
+      order: 1;
+    }
+
+    #connect-button,
+    nav {
+      order: 2;
+    }
+
+    #toggle-menu {
+      order: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  /* menu burger positioning */
+  header nav {
+    position: absolute;
+    top: 0;
+    right: -60%;
+    background-color: var(--bluegrey);
+    backdrop-filter: blur(4px);
+    width: 60%;
+    padding-top: 75px;
+    transition: var(--transitionTime);
+    height: 100vh;
+
+    ul {
+      flex-direction: column;
+      align-items: baseline;
+
+      li {
+        padding: 20px;
+      }
+    }
+  }
+
+  #detailFilm {
+    padding: 0 5%;
+  }
+
+  /* JS */
+  .show-menu {
+    right: 0;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #une figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #detailFilm {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    section,
+    figure {
+      width: 80%;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  #search {
+    display: none;
+  }
+
+  #personInfos figure {
+    width: 80%;
+  }
+
+  #detailFilm {
+
+    section,
+    figure {
+      width: 90%;
+    }
+  }
+
+  .acteurCard {
+    flex-direction: column;
+    text-align: center;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    figcaption {
+      margin: 15px 0;
+    }
+  }
+
+  .carroussel {
+    .arrow-left {
+      left: -30px;
+    }
+
+    .arrow-right {
+      right: -30px;
+    }
+  }
+}
+
+/* ////////// MIN to MAX ////////// */
+
+@media screen and (min-width: 1000px) {
+
+  #close-button,
+  #toggle-menu {
+    display: none;
+  }
+
+  #genres-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #tableFilms {
+
+    td {
+      padding: 35px 0;
+    }
+
+    img {
+      width: 200px;
+    }
+  }
+}
+
+
+/* ///////////// FONTS //////////// */
+
+/* ////////// MOBILE FIRST //////// */
+
+@media screen and (min-width: 600px) {
+  h3 {
+    font-size: 2rem;
+  }
+
+  h4 {
+    font-size: 1.3rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  p,
+  .synopsis {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 800px) {
+
+  h3 {
+    font-size: 2.5rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  /* .title {} */
+
+  /* .subtitle {} */
+
+  /* .synopsis {} */
+}
+
+@media screen and (min-width: 1000px) {
+
+  /* h3 {} */
+
+  /* h4 {} */
+
+  /* .title {} */
+
+  /* .subtitle {} */
+
+  p,
+  .synopsis {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  h3 {
+    font-size: 3rem;
+  }
+
+  h4 {
+    font-size: 2.2rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+  }
+
+  /* .synopsis {} */
+
+}
+
+@media screen and (min-width: 1500px) {
+
+  h3 {
+    font-size: 3.5rem;
+  }
+
+  /* h4 {} */
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .subtitle {
+    font-size: 1.8rem;
+  }
+
+  p,
+  .synopsis {
+    font-size: 1.5rem;
+  }
+
+  #une article figure {
+    align-items: baseline;
+  }
+}

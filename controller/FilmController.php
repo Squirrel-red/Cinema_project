@@ -67,9 +67,187 @@ class FilmController {
     require "view/detailFilm.php";
   }
   
-  // créer du film //
+    ////////////// FORMULAIRE DE CREATION //////////////
+    function creerFilmForm(){
+      $pdo = Connect::seconnecter();
   
-  // supprimer un film //
+      // Récupération de tous les réalisateurs
+      $requeteRealisateurs = $pdo->query("
+        SELECT *, CONCAT(p.prenom, ' ', p.nom) AS fullName
+        FROM realisateur r
+        INNER JOIN personne p ON p.id_personne = r.id_personne
+        ORDER BY nom");
+  
+      // Récupération de tous les genres
+      $requeteGenres = $pdo->query("
+        SELECT *
+        FROM genre
+        ORDER BY nom_genre");
+  
+      // On vérifie l'existance des attributs dans le GET
+      // (il n'y en aura qu'un et $id prendra sa valeur)
+  
+      // Récupération du rea si dans url
+      if (isset($_GET["rea"])) { 
+        $id = $_GET["rea"];
+  
+        $requeteGetRea = $pdo->prepare("
+          SELECT *, CONCAT(prenom, ' ', nom) AS fullName
+          FROM realisateur r
+          INNER JOIN personne p ON p.id_personne = r.id_personne
+          WHERE id_realisateur = :id
+          ");
+        $requeteGetRea->execute(["id" => $id]);
+      }
+  
+      // Récupération du genre si dans url
+      if (isset($_GET["genre"])) { 
+        $id = $_GET["genre"];
+  
+        $requeteGetGenre = $pdo->prepare("
+          SELECT *
+          FROM genre
+          WHERE id_genre = :id
+          ");
+        $requeteGetGenre->execute(["id" => $id]);
+      }
+  
+      // Récupération du acteur si dans url
+      // if (isset($_GET["acteur"])) { 
+      //   $id = $_GET["acteur"];
+  
+      //   $requeteGetActeur = $pdo->prepare("
+      //     SELECT *, CONCAT(prenom, ' ', nom) AS fullName
+      //     FROM acteur a
+      //     INNER JOIN personne p ON p.id_personne = a.id_personne
+      //     WHERE id_acteur = :id
+      //     ");
+      //   $requeteGetActeur->execute(["id" => $id]);
+      // }
+  
+      require "view/form/formCreerFilm.php";
+    }
+  
+    //////////// Création du film ////////////
+    function creationFilm(){
+      $pdo = Connect::seconnecter();
+  
+      $nom = filter_input(INPUT_POST, "nom_film", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+      $duree = filter_input(INPUT_POST, "duree", FILTER_SANITIZE_NUMBER_INT);
+      $date = filter_input(INPUT_POST, "date_sortie");
+      $synopsis = filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+      $affiche_film = filter_input(INPUT_POST, "affiche_film", FILTER_SANITIZE_URL);
+      $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_NUMBER_FLOAT);
+      $reaId = filter_input(INPUT_POST, "realisateur");
+      
+  
+      $requeteCreation = $pdo->prepare("
+      INSERT INTO film 
+      (nom_film, duree, date_sortie, synopsis, affiche_film, note, id_realisateur)
+      VALUES (:nom, :duree, :date, :synopsis, :affiche, :note, :reaId)
+      ");
+      $requeteCreation->execute([
+        "nom" => $nom,
+        "duree" => $duree,
+        "date" => $date,
+        "synopsis" => $synopsis,
+        "affiche_film" => $affiche_film,
+        "note" => $note,
+        "reaId" => $reaId,
+    ]);
+  
+      // + la notif de création
+      $_SESSION["ValidatorMessages"][] = "
+      <div class='notification add'>
+        <p>La création du nouveau film <b>$nom</b> est bien effectuée</p>
+        <i class='fa-solid fa-circle-xmark'></i>
+      </div>";
+  
+    // On récupère l'id du film créé
+    $id_film = $pdo->lastInsertId();
+  
+      // on veut un tableau de $genres 
+      $genres = [];
+  
+      if (isset($_POST['genres'])) {
+  
+        foreach ($_POST["genres"] as $genre) {
+          // on push chaque valeur filtrée dans le tableau $genres
+          $genres[] = filter_var($genre, FILTER_SANITIZE_NUMBER_INT);
+        }
+      }
+      // var_dump($genres);
+  
+      foreach($genres as $id_genre) {
+        $requete = $pdo->prepare("
+        INSERT INTO filmotheque
+        (id_film, id_genre)
+        VALUES (:film, :genre)
+        ");
+        $requete->execute([
+          "film" => $id_film,
+          "genre" => $id_genre
+        ]);
+  
+        // On récupère le nom des genres pour la notif
+        $requeteGenre = $pdo->prepare("
+        SELECT *
+        FROM genre
+        WHERE id_genre = :id
+        ");
+        $requeteGenre->execute(["id" => $id_genre]);
+        $genre = $requeteGenre->fetch();
+        $nomGenre = $genre["nom_genre"];
+  
+        // + la notif d'ajout'
+        $_SESSION["ValidatorMessages"][] = "
+        <div class='notification add'>
+          <p>Le film <b>$nom</b> s'est vu attribuer le genre <b>$nomGenre</b></p>
+          <i class='fa-solid fa-circle-xmark'></i>
+        </div>";
+      }
+      
+      header("Location:index.php?action=listFilms");
+    }
+  
+    //////////////// supprimer un film ////////////////
+    function supprimerFilm() {
+      $pdo = Connect::seconnecter();
+  
+      $id = filter_input(INPUT_POST, "film");
+  
+      // on récup le nom du film pour la notif
+      $requeteNom = $pdo->prepare("
+      SELECT nom_film
+      FROM film
+      WHERE id_film = :id
+      ");
+      $requeteNom->execute(["id"=>$id]);
+      $film = $requeteNom->fetch();
+      $nomFilm = $film["nom_film"];
+  
+      // requetes de suppression
+      $requete = $pdo->prepare("
+      DELETE FROM gestion_genre
+      WHERE id_film = :id;
+  
+      DELETE FROM casting
+      WHERE id_film = :id;
+  
+      DELETE FROM film
+      WHERE id_film = :id;");
+  
+      $requete->execute(["id" => $id]);
+  
+      // + la notif
+      $_SESSION["ValidatorMessages"][] = "
+      <div class='notification remove'>
+        <p>Le film <b>$nomFilm</b> a bien été supprimé</p>
+        <i class='fa-solid fa-circle-xmark'></i>
+      </div>";
+      
+      header("Location:index.php?action=listFilms");
+    }
 
   // modifier un film //
 

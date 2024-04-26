@@ -52,6 +52,42 @@ class ActeurController {
     require "view/listActeurs.php";
   }
   // Ajouter un acteur
-  // Supprimer un acteur
 
+
+ // Supprimer un acteur
+ public function supprimerActeur() {
+  $pdo = Connect::seconnecter();
+
+  $id_acteur = filter_input(INPUT_POST,'acteur', FILTER_SANITIZE_NUMBER_INT);
+
+  // on récup le nom de l'acteur pour la notif
+  $requeteActeur = $pdo->prepare("
+  SELECT CONCAT(prenom, ' ', nom) as fullName
+  FROM personne p
+  INNER JOIN acteur a ON a.id_personne = p.id_personne
+  WHERE id_acteur = :id
+  ");
+  $requeteActeur->execute(["id"=>$id_acteur]);
+  $acteur = $requeteActeur->fetch();
+  $nomActeur = $acteur["fullName"];
+
+  // on supprime toute trace de l'acteur
+  $requete = $pdo->prepare("
+  DELETE FROM casting
+  WHERE id_acteur = :id;
+
+  DELETE FROM acteur
+  WHERE id_acteur = :id;
+  ");
+  $requete->execute(["id"=>$id_acteur]);
+
+  // + notif
+  $_SESSION["ValidatorMessages"][] = "
+  <div class='notification remove'>
+    <p>Toute trace de l'acteur <b>".$nomActeur."</b> a été supprimée</p>
+    <i class='fa-solid fa-circle-xmark'></i>
+  </div>";
+
+  header("Location:index.php?action=listActeurs");
+}
 }

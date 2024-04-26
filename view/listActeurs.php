@@ -51,6 +51,6 @@ $acteurs = $requete->fetchAll();
 
 <?php
 $titre = "Liste des acteurs";
-$titre_secondaire = "Liste des acteurs";
+$titre_secondaire = "LISTE DES ACTEURS";
 $contenu = ob_get_clean();
 require "templates/template.php";

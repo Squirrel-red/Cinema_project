@@ -19,6 +19,6 @@ $realisateurs = $requete->fetchAll() ?>
 </section>
 <?php
 $titre = "Liste des realisateurs";
-$titre_secondaire = "Liste des realisateurs";
+$titre_secondaire = "LISTE DES REALISATEURS";
 $contenu = ob_get_clean();
 require "templates/template.php";

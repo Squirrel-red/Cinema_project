@@ -23,6 +23,6 @@
 
 <?php
 $titre = "Liste des personnes";
-$titre_secondaire = "Liste des personnes";
+$titre_secondaire = "LISTE DES PERSONNES";
 $contenu = ob_get_clean();
 require_once "templates/template.php";

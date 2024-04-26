@@ -150,6 +150,6 @@ $filmsSf = $requeteSF->fetchAll();
 
 <?php
 $titre = "Accueil";
-$titre_secondaire = "Trouvez le meilleur film de votre vie!";
+$titre_secondaire = "TROUVEZ LE MEILLEUR FILM DE VOTRE VIE!";
 $contenu = ob_get_clean();
 require "templates/template.php";

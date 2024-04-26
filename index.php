@@ -51,6 +51,14 @@ if(isset($_GET["action"])){
     
 
     // cases (créer, ajouter, modifier, supprimer)
+
+        // genre
+        case "ajouterGenre": $ctrlGenre->ajouterGenre();break;
+        case "supprimerGenre": $ctrlGenre->supprimerGenre();break;
+
+        // genre film
+        case "ajouterGenreFilm": $ctrlGenre->ajouterGenreFilm($id);break;
+        case "supprimerGenreFilm": $ctrlGenre->supprimerGenreFilm($id);break;
         
         // supprimer casting
         case "supprimerCastingFilm": $ctrlCasting->supprimerCastingFilm($id);break;

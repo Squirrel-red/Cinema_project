@@ -56,6 +56,6 @@ $films = $requete->fetchAll();
 
 <?php
 $titre = "Liste des films";
-$titre_secondaire = "Liste des films";
+$titre_secondaire = "LISTE DES FILMS";
 $contenu = ob_get_clean();
 require "templates/template.php";
