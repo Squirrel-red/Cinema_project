@@ -1185,7 +1185,7 @@ footer {
     width: 100%;
   }
 
-  .carroussel {
+  .carrousel {
     width: 80%;
     align-self: center;
   }
@@ -1298,7 +1298,7 @@ footer {
     }
   }
 
-  .carroussel {
+  .carrousel {
     .arrow-left {
       left: -30px;
     }

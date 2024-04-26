@@ -134,6 +134,10 @@
 
   <script src="public/js/menuBurger.js"></script>
   <script src="public/js/carrousel.js"></script>
+  <script src="public/js/changeCastingFilm.js"></script>
+  <script src="public/js/form_add_remove.js"></script>
+  <script src="public/js/notif.js"></script>
+  <script src="public/js/warningMessage.js"></script>
 
 
 </body>
