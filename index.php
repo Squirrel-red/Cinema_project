@@ -7,7 +7,7 @@ use Controller\GenresController;
 use Controller\RealisateurController;
 use Controller\ActeurController;
 use Controller\CastingController;
-//use Controller\PersonneController;
+use Controller\PersonneController;
 
 
 // On autocharge l'ensemble des classes du projet
@@ -22,7 +22,7 @@ $ctrlGenre = new GenresController();
 $ctrlRea = new RealisateurController();
 $ctrlActeur = new ActeurController();
 $ctrlCasting = new CastingController();
-//$ctrlPersonne = new PersonneController();
+$ctrlPersonne = new PersonneController();
 
 $id= ($_GET["id"]) ;
 
@@ -51,6 +51,24 @@ if(isset($_GET["action"])){
     
 
     // cases (créer, ajouter, modifier, supprimer)
+    
+        // créer / supprimer film
+        case "creerFilm": $ctrlFilm->creerFilmForm();break;
+        case "creationFilm": $ctrlFilm->creationFilm();break; 
+        case "supprimerFilm": $ctrlFilm->supprimerFilm();break; 
+    
+        // films Realisateur
+        case "ajouterFilmRea": $ctrlRea->ajouterFilmRea($id);break;
+        case "supprimerFilmRea": $ctrlRea->supprimerFilmRea($id);break;
+    
+        // créer personne
+        case "creerFormActeur": $ctrlPersonne->creerFormPersonne("acteur");break;
+        case "creerFormRealisateur": $ctrlPersonne->creerFormPersonne("realisateur");break;  
+        case "creerPersonne": $ctrlPersonne->creerPersonne();break;
+    
+        // supprimer personne
+        case "supprimerActeur": $ctrlActeur->supprimerActeur();break;
+        case "supprimerRealisateur": $ctrlRea->supprimerRealisateur();break;
 
         // genre
         case "ajouterGenre": $ctrlGenre->ajouterGenre();break;
@@ -67,7 +85,7 @@ if(isset($_GET["action"])){
         // créer casting
         case "creerCastingFilm": $ctrlCasting->creerCastingFilm($id);break;
         case "creerCastingActeur": $ctrlCasting->creerCastingActeur($id);break;  
-
+      
         default: $ctrlCinema->Accueil();
     }
 }   else {

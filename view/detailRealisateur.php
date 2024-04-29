@@ -50,13 +50,63 @@ $otherFilms = $requeteOtherFilms->fetchAll();
      Il y a <?= $requeteFilms->rowCount() ?> film(-s) dans notre filmotèque:
   </p>
 
+  <div class='buttons'>
     <!-- créer un nouveau film -->
+    <a href="index.php?action=creerFilm&rea=<?= $detailRealisateur["id_realisateur"] ?>">
+      <button class="createButton">créer un film</button>
+    </a>
 
+    <!-- ajouter un film (sans rea) -->
+    <div class="addContainer">
+      <button class="addButton">ajouter un film</button>
 
-    <!-- ajouter un film (sans réalisateur) -->
+      <form id="addFilm" action="index.php?action=ajouterFilmRea&id=<?= $detailRealisateur["id_realisateur"] ?>"
+        method="post">
 
+        <!-- choix film -->
+        <select name="film" required>
+          <option selected="true" value="" disabled="disabled">
+            Choisissez un film
+          </option>
+          <?php foreach($otherFilms as $film) { ?>
 
-    <!-- supprimer le réalisateur d'un film -->
+          <option value="<?= $film["id_film"] ?>">
+            <?= $film["nom_film"] ?>
+          </option>
+          <?php } ?>
+        </select>
+
+        <input type="submit" value="valider">
+      </form>
+    </div>
+
+    <!-- supprimer le réa d'un film -->
+    <div class="removeContainer">
+      <button class="removeButton">supprimer un film</button>
+
+      <form id="removeFilm" class="divWarning"
+        action="index.php?action=supprimerFilmRea&id=<?= $detailRealisateur["id_realisateur"] ?>" method="post">
+        <select name="film" class="warner" required>
+          <option selected="true" value="" disabled="disabled">
+            Choisissez un film
+          </option>
+          <?php foreach($reaFilms as $film) { ?>
+
+          <option value="<?= $film["id_film"] ?>">
+            <?= $film["nom_film"] ?>
+          </option>
+
+          <?php } ?>
+        </select>
+        <span class="warningMessage warningCache">
+          Attention, ce film n'aura plus de réalisateur dans la base de
+          donnée
+        </span>
+        <input type="submit" value="valider">
+      </form>
+    </div>
+  </div>
+
 
 
   <table class="tableFilms">

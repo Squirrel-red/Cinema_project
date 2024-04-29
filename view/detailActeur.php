@@ -32,10 +32,14 @@ $films = $requeteAllFilms->fetchAll(); ?>
 </section>
 
 
-   <!-- modifier les infos coder ...  -->
-
-
-
+   <!-- modifier les infos coder-->
+<div class="buttons">
+  <a href="index.php?action=modifActeurForm&id=<?= $detailActeur["id_acteur"] ?>">
+    <button><i class="fa-solid fa-pen editButton"></i>
+      modifier les infos
+    </button>
+  </a>
+</div>
 
 <hr>
 <!-- Films avec l'acteur -->

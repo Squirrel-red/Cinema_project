@@ -6,9 +6,34 @@ $films = $requete->fetchAll();
 
   <p class="nbInfo">Il y a <?= $requete->rowCount() ?> films dans la base de données.</p>
 
-  <!--ici on code ajout/suppression du film ...-->
+  <!--ajout/suppression du film -->
 
-  <!-- ..                                       -->
+  <div class='buttons'>
+    <a href="index.php?action=creerFilm">
+      <button class="createButton">créer un film</button>
+    </a>
+
+    <div class="removeContainer">
+      <button class="removeButton">supprimer un film</button>
+
+      <!-- insertion des films existants dans la liste -->
+      <form id="removeFilm" action="index.php?action=supprimerFilm" method="post">
+        <select name="film" required>
+          <option selected="true" value="" disabled="disabled">
+            Choisissez un film
+          </option>
+          <?php foreach($films as $film) { ?>
+
+          <option value="<?= $film["id_film"] ?>">
+            <?= $film["nom_film"] ?>
+          </option>
+
+          <?php } ?>
+        </select>
+        <input type="submit" value="valider">
+      </form>
+    </div>
+  </div>
 
   <!-- listing des films -->
   <p class="subtitle">Sélectionnez un film :</p>
