@@ -47,7 +47,7 @@ $otherFilms = $requeteOtherFilms->fetchAll();
 
   <p class="subtitle">
 
-     Il y a <?= $requeteFilms->rowCount() ?> film(-s) dans notre filmotèque:
+     Il y a <?= $requeteFilms->rowCount() ?> film(s) dans notre filmothèque:
   </p>
 
   <div class='buttons'>
@@ -99,8 +99,7 @@ $otherFilms = $requeteOtherFilms->fetchAll();
           <?php } ?>
         </select>
         <span class="warningMessage warningCache">
-          Attention, ce film n'aura plus de réalisateur dans la base de
-          donnée
+          Attention, ce film n'aura plus de réalisateur dans la filmothèque
         </span>
         <input type="submit" value="valider">
       </form>

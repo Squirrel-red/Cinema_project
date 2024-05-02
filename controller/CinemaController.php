@@ -7,7 +7,8 @@ class CinemaController {
 
 
 
-// ----- VIEW DE LA PAGE D'ACCUEIL---------- //
+// Affichage de la page d'ACCUEIL //
+
 public function Accueil() {
     $pdo = Connect::seConnecter();
     // infos film favori

@@ -25,7 +25,7 @@ class PersonneController {
     $type =  filter_input(INPUT_POST,'type');
     $isReaActeur = isset($_POST["reaActeur"]) ? true : false;
 
-    // On créait la personne
+    // On créé la personne
     $requetePersonne = $pdo->prepare("
     INSERT INTO personne 
     (nom, prenom, sexe, photo, date_naissance)
@@ -45,24 +45,24 @@ class PersonneController {
         <i class='fa-solid fa-circle-xmark'></i>
       </div>";
 
-    // On récupère l'id directement!
+    // On récupère l'id directement
     $id = $pdo->lastInsertId();
 
-// On créait le nouveau acteur ou réa en fonction du type choisi
+// On créé le nouveau acteur ou réa en fonction du type choisi
     $requeteType = $pdo->prepare("
       INSERT INTO $type (id_personne)
       VALUES ('$id')
       ");
     $requeteType->execute();
 
-    // + la notif
+    // + la notification
     $_SESSION["ValidatorMessages"][] = "
     <div class='notification add'>
       <p>La création <b>".($type == "acteur" ? "de l'acteur" : "du réalisateur")."</b> est bien effectuée</p>
       <i class='fa-solid fa-circle-xmark'></i>
     </div>";
 
-// Si c'est les 2 types, alors on le créait dans l'autre table.
+// Si c'est les 2 types, alors on le créé dans l'autre table.
     if($isReaActeur) {
       $otherType = (($type == 'acteur') ? "realisateur" : "acteur");
 
@@ -72,7 +72,7 @@ class PersonneController {
         ");
       $requeteOtherType->execute([]);
 
-    // + notif
+    // + notification
       $_SESSION["ValidatorMessages"][] = "
       <div class='notification add'>
         <p>La création <b>".($otherType == "acteur" ? "de l'acteur" : "du réalisateur")."</b> est bien effectuée</p>

@@ -60,7 +60,7 @@ class GenresController {
 
     // CREATION & SUPPRESSION //
   
-   //////////// Formulaire ajout genre ////////////
+   // Formulaire ajout genre //
    public function ajouterGenre() {
     $pdo = Connect::seConnecter();
 
@@ -82,7 +82,7 @@ class GenresController {
     header('Location:index.php?action=listGenres');
   }
 
-  ////////// Formulaire suppression genre //////////
+  // Formulaire suppression genre //
   public function supprimerGenre() {
     $pdo = Connect::seConnecter();
 
@@ -117,9 +117,9 @@ class GenresController {
     header('Location:index.php?action=listGenres');
   }
 
-    ////////////// GENRES D'UN FILM //////////////
+  // GENRES D'UN FILM //
 
-  ///////////// Ajouter le genre d'un film /////////////
+  // Ajouter le genre d'un film //
   public function ajouterGenreFilm($id) {
     $pdo = Connect::seconnecter();
 
@@ -134,7 +134,7 @@ class GenresController {
       "idFilm" => $film
     ]);
 
-    // on récupère le nom du genre et du film pour la notif
+    // on récupère le nom du genre et du film pour la notification
     $requeteInfos = $pdo->prepare("
     SELECT nom_genre, nom_film
     FROM gestion_genre g
@@ -160,7 +160,7 @@ class GenresController {
     header('Location:index.php?action=filmsGenre&id='.$id);
   }
 
-  //////////// Supprimer le genre d'un film ////////////
+  // Supprimer le genre d'un film //
   public function supprimerGenreFilm($id) {
     $pdo = Connect::seconnecter();
 
@@ -193,7 +193,7 @@ class GenresController {
       "idFilm" => $film
     ]);
 
-    // + la notif
+    // + la notification
     $_SESSION["ValidatorMessages"][] = "
     <div class='notification remove'>
       <p><b>$nomFilm</b> est supprimé du genre <b>$nomGenre</b></p>

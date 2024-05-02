@@ -5,8 +5,6 @@ use Model\Connect;
 
 class CastingController {
   
-  ////////////// SUPPRIMER CASTING //////////////
-
 
   // supprimer casting en fonction du film //
 
@@ -94,9 +92,7 @@ class CastingController {
         header("Location:index.php?action=detailActeur&id=$id");
   }
 
-
-  //////////////// CREER CASTING ////////////////
-  // en fonction de l'acteur 
+  // Créer casting en fonction de l'acteur 
   public function creerCastingActeur($idActeur) {
     $pdo = Connect::seconnecter();
 
@@ -156,8 +152,7 @@ class CastingController {
   }
 
   
-  //////////////// CREER CASTING ////////////////
-  ///////////// en fonction du film 
+  // Créer casting en fonction du film 
   
   public function creerCastingFilm($idFilm) {
     $pdo = Connect::seconnecter();

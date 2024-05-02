@@ -51,7 +51,7 @@ class ActeurController {
 
     require "view/listActeurs.php";
   }
-  // Ajouter un acteur
+  // Ajouter un acteur (on l'ajoute comme un personne en précisant si cest un acteur ou réalisateur)
 
 
  // Supprimer un acteur

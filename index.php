@@ -84,7 +84,17 @@ if(isset($_GET["action"])){
       
         // créer casting
         case "creerCastingFilm": $ctrlCasting->creerCastingFilm($id);break;
-        case "creerCastingActeur": $ctrlCasting->creerCastingActeur($id);break;  
+        case "creerCastingActeur": $ctrlCasting->creerCastingActeur($id);break;
+        
+        // modif personne
+        case "modifActeurForm": $ctrlPersonne->modifPersonneForm($id, "acteur");break;
+        case "modifRealisateurForm": $ctrlPersonne->modifPersonneForm($id, "realisateur");break;
+        case "modifPersonne": $ctrlPersonne->modifPersonne($id);break;
+
+        // modifFilm
+        case "modifFilmForm": $ctrlFilm->modifFilmForm($id);break;
+        case "modifFilm": $ctrlFilm->modifFilm($id);break;
+
       
         default: $ctrlCinema->Accueil();
     }

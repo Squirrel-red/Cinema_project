@@ -5,7 +5,7 @@ use Model\Connect;
 
 class FilmController {
 
-  // VIEW DE LA PAGE listFilms //
+  // Affichage listFilms //
   public function listFilms() {
     $pdo = Connect::seConnecter();
     $requete = $pdo->query("
@@ -18,7 +18,7 @@ class FilmController {
   }
 
 
-  // VIEW DE LA PAGE detailFilm //
+  // Affichage detailFilm //
   public function detailFilm($id) {
     $pdo = Connect::seConnecter();
 
@@ -67,7 +67,7 @@ class FilmController {
     require "view/detailFilm.php";
   }
   
-    ////////////// FORMULAIRE DE CREATION //////////////
+    // Formulaire pour créer un film //
     function creerFilmForm(){
       $pdo = Connect::seconnecter();
   
@@ -128,7 +128,7 @@ class FilmController {
       require "view/form/formCreerFilm.php";
     }
   
-    //////////// Création du film ////////////
+    // Création du film ///
     function creationFilm(){
       $pdo = Connect::seconnecter();
   
@@ -210,7 +210,7 @@ class FilmController {
       header("Location:index.php?action=listFilms");
     }
   
-    //////////////// supprimer un film ////////////////
+    // supprimer un film //
     function supprimerFilm() {
       $pdo = Connect::seconnecter();
   
@@ -249,8 +249,82 @@ class FilmController {
       header("Location:index.php?action=listFilms");
     }
 
-  // modifier un film //
 
-  // mettre à jour d'un film //
+  // Modification du film //
+
+  // Formulaire modification de film //
+  public function modifFilmForm($id) {
+    $pdo = Connect::seconnecter();
+
+    // Récupération de tous les réalisateurs
+    $requeteRealisateurs = $pdo->query("
+      SELECT *, CONCAT(p.prenom, ' ', p.nom) AS fullName
+      FROM realisateur r
+      INNER JOIN personne p ON p.id_personne = r.id_personne
+      ORDER BY nom");
+
+    // Récupération de tous les genres
+    $requeteGenres = $pdo->query("
+      SELECT *
+      FROM genre
+      ORDER BY nom_genre");
+
+    // récupération du film
+    $requeteFilm = $pdo->prepare("
+    SELECT *
+    FROM film
+    WHERE id_film = :id
+    ");
+
+    $requeteFilm->execute(["id" => $id]);
+
+    $modif = true;
+
+    require "view/form/formCreerFilm.php";    
+  }
+
+  // Mise a jour du film
+  public function modifFilm($id) {
+    $pdo = Connect::seconnecter();
+    
+    $nom = filter_input(INPUT_POST, "nom_film", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $duree = filter_input(INPUT_POST, "duree", FILTER_SANITIZE_NUMBER_INT);
+    $date = filter_input(INPUT_POST, "date_sortie");
+    $synopsis = filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $affiche = filter_input(INPUT_POST, "affiche", FILTER_SANITIZE_URL);
+    $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_NUMBER_FLOAT);
+    $reaId = filter_input(INPUT_POST, "realisateur");
+   
+    $requete = $pdo->prepare("
+    UPDATE film
+    SET
+        nom_film = :nom,
+        duree = :duree,
+        date_sortie = :date,
+        synopsis = :synopsis,
+        affiche = :affiche,
+        note = :note,
+        id_realisateur = :reaId
+    WHERE id_film = :id
+    ");
+    $requete->execute([
+      "nom" => $nom,
+      "duree" => $duree,
+      "date" => $date,
+      "synopsis" => $synopsis,
+      "affiche" => $affiche,
+      "note" => $note,
+      "reaId" => $reaId,
+      "id" => $id,
+  ]);
+
+  $_SESSION["ValidatorMessages"][] = "
+    <div class='notification add'>
+      <p>Les informations sur le film <b>$nom</b> ont été mises à jour</p>
+      <i class='fa-solid fa-circle-xmark'></i>
+    </div>";
+
+    header("Location:index.php?action=listFilms");
+  }
   
 }

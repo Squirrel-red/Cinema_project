@@ -47,7 +47,7 @@ $films = $requeteAllFilms->fetchAll(); ?>
   <h4>Ses rôles :</h4>
   <p class="subtitle">
    
-    Il y a <?= $requeteFilms->rowCount() ?> film/-s éxistant dans notre filmothéque :
+    Il y a <?= $requeteFilms->rowCount() ?> film(s) dans notre filmothéque :
   </p>
  
  
