@@ -32,7 +32,7 @@
           <p>Dans le rôle de :</p>
           <p class="subtitle"><?= $person["nom_role"] ?></p>
         </div>
-        <i class="fa-solid fa-pen editButton"></i>
+        <!--<i class="fa-solid fa-pen editButton"></i>-->
       </div>
 
       <?php } 

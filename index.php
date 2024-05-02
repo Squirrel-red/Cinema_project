@@ -24,7 +24,8 @@ $ctrlActeur = new ActeurController();
 $ctrlCasting = new CastingController();
 $ctrlPersonne = new PersonneController();
 
-$id= ($_GET["id"]) ;
+
+$id= (isset($_GET["id"])) ? filter_input(INPUT_GET, "id", FILTER_DEFAULT) : null;
 
 // En fonction de l'action détéctée dans l'URL via la propriété "action"
 // on interagit avec la bonne méthode du controller
